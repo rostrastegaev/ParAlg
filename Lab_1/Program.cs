@@ -51,7 +51,7 @@ namespace Lab_1
 
             int iterations = 10;
             var array = new FileReader(File.OpenRead(FileName)).Read();
-            Console.WriteLine($"Iterations: {iterations}");
+            Console.WriteLine($"Iterations: {iterations}\n");
 
             int[] results = new int[iterations];
             var counter = new Counter(array);
@@ -67,7 +67,7 @@ namespace Lab_1
             }
 
             int notParallelMilliseconds = (int)Math.Floor(results.Average());
-            Console.WriteLine($"\nNot parallel: max = {result.max}, count = {result.count}, avg time = {notParallelMilliseconds} millisec\n");
+            Console.WriteLine($"Not parallel: max = {result.max}, count = {result.count}, avg time = {notParallelMilliseconds} millisec\n");
 
             for (int i = 2; i < 6; ++i)
             {
@@ -82,8 +82,8 @@ namespace Lab_1
                 }
                 int parallelMilliseconds = (int)Math.Floor(results.Average());
                 double coefficient = (double)notParallelMilliseconds / parallelMilliseconds;
-                Console.WriteLine($"Parallel ({i} cores): max = {result.max}, count = {result.count}, avg time =  {parallelMilliseconds} millisec\n");
-                Console.WriteLine($"Coefficient: {coefficient:0.00}");
+                Console.WriteLine($"Parallel ({i} cores): max = {result.max}, count = {result.count}, avg time =  {parallelMilliseconds} millisec");
+                Console.WriteLine($"Coefficient: {coefficient:0.00}\n");
             }
         }
     }
