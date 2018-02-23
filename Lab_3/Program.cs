@@ -41,8 +41,8 @@ namespace Lab_3
                 throw new ArgumentException("Argument is not an integer");
             }
 
-            new MatrixWriter().Generate(File.CreateText(MatrixA), size);
-            new MatrixWriter().Generate(File.CreateText(MatrixB), size);
+            new MatrixWriter().Generate(MatrixA, size);
+            new MatrixWriter().Generate(MatrixB, size);
         }
 
         private static void ProceedCounting()
@@ -50,8 +50,8 @@ namespace Lab_3
             int iterations = 10;
             Console.WriteLine($"Iterations: {iterations}");
 
-            Matrix a = new MatrixReader().Read(File.OpenRead(MatrixA));
-            Matrix b = new MatrixReader().Read(File.OpenRead(MatrixB));
+            Matrix a = new MatrixReader().Read(MatrixA);
+            Matrix b = new MatrixReader().Read(MatrixB);
             Matrix res = null;
 
             int[] results = new int[iterations];
@@ -66,7 +66,7 @@ namespace Lab_3
 
             int nonParallel = (int)Math.Floor(results.Average());
             Console.WriteLine($"\nNot parallel: avg time = {nonParallel} millisec\n");
-            new MatrixWriter().Write(File.CreateText(MatrixRes), res);
+            new MatrixWriter().Write(MatrixRes, res);
 
             for (int i = 0; i < iterations; ++i)
             {
@@ -80,7 +80,7 @@ namespace Lab_3
             double coefficient = (double)nonParallel / parallelMilliseconds;
             Console.WriteLine($"Parallel ({ProcessorsCount} cores) : avg time =  {parallelMilliseconds} millisec\n");
             Console.WriteLine($"Coefficient: {coefficient:0.00}");
-            new MatrixWriter().Write(File.CreateText(MatrixResParal), res);
+            new MatrixWriter().Write(MatrixResParal, res);
         }
     }
 }

@@ -7,16 +7,20 @@ namespace Lab_3
     {
         private const int Max = 100;
 
-        public void Write(StreamWriter writer, Matrix matrix)
+        public void Write(string fileName, Matrix matrix)
         {
-            for (int i = 0; i < matrix.Size; ++i)
+            using (var stream = new FileStream(fileName, FileMode.Create))
+            using (var writer = new StreamWriter(stream))
             {
-                writer.Write(string.Join(" ", matrix[i]));
+                for (int i = 0; i < matrix.Size; ++i)
+                {
+                    writer.Write(string.Join("\t", matrix[i]));
+                    writer.WriteLine();
+                }
             }
-            writer.WriteLine();
         }
 
-        public void Generate(StreamWriter writer, int size)
+        public void Generate(string fileName, int size)
         {
             var random = new Random();
             var matrix = new Matrix(size);
@@ -29,7 +33,7 @@ namespace Lab_3
                 }
             }
 
-            Write(writer, matrix);
+            Write(fileName, matrix);
         }
     }
 }

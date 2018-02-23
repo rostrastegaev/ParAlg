@@ -26,17 +26,10 @@ namespace Lab_3
             Init(size);
         }
 
-        public Matrix(int[] array)
+        public Matrix(int[][] array)
         {
-            Init(array.Length / 2);
-
-            for (int i = 0; i < _size; ++i)
-            {
-                for (int j = 0; j < _size; ++j)
-                {
-                    _matrix[i][j] = array[i * _size + j];
-                }
-            }
+            _size = array[0].Length;
+            _matrix = array;
         }
 
         private void Init(int size)
@@ -93,6 +86,7 @@ namespace Lab_3
                 });
             }
 
+            Task.WaitAll(tasks);
             return result;
         }
 
