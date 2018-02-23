@@ -14,7 +14,7 @@ namespace Lab_1
             _processorsCount = processorsCount;
         }
 
-        public (int max, int count) Count()
+        public CountResult Count()
         {
             int blockLength = (int)Math.Ceiling((double)_array.Length / _processorsCount);
             int[] maxs = new int[_processorsCount];
@@ -47,7 +47,7 @@ namespace Lab_1
             }
             Task.WaitAll(tasks);
 
-            return (maxResult, Aggregate(counts));
+            return new CountResult(maxResult, Aggregate(counts));
         }
 
         private int FindMax(int startIndex, int length)

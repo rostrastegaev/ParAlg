@@ -2,6 +2,6 @@
 {
     public interface ICounter
     {
-        (int max, int count) Count();
+        CountResult Count();
     }
 }

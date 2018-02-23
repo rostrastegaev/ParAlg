@@ -9,10 +9,10 @@
             _array = array;
         }
 
-        public (int max, int count) Count()
+        public CountResult Count()
         {
             int min = _array.Max();
-            return (min, Count(min));
+            return new CountResult(min, Count(min));
         }
 
         private int Count(int maxValue)
