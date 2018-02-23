@@ -34,7 +34,8 @@ namespace Lab_1
 
         private static void ProceedGeneration(string[] args)
         {
-            if (!int.TryParse(args[1], out int arrayLength))
+            int arrayLength;
+            if (!int.TryParse(args[1], out arrayLength))
             {
                 throw new ArgumentException("Argument is not an integer");
             }

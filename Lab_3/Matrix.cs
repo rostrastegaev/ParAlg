@@ -8,17 +8,20 @@ namespace Lab_3
         private int[][] _matrix;
         private int _size;
 
-        public int Size => _size;
+        public int Size
+        {
+            get { return _size; }
+        }
 
         public int this[int i, int j]
         {
-            get => _matrix[i][j];
-            set => _matrix[i][j] = value;
+            get { return _matrix[i][j]; }
+            set { _matrix[i][j] = value; }
         }
 
         public int[] this[int i]
         {
-            get => _matrix[i];
+            get { return _matrix[i]; }
         }
 
         public Matrix(int size)

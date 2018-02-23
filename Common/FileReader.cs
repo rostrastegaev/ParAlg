@@ -47,8 +47,9 @@ namespace Common
         private int ParseInfo(string info)
         {
             var splittedInfo = SplitLine(info);
+            int arrayLength;
             if (splittedInfo.Length != 1 ||
-                !int.TryParse(splittedInfo[0], out int arrayLength))
+                !int.TryParse(splittedInfo[0], out arrayLength))
             {
                 throw new ArgumentException("File header has invalid format");
             }
